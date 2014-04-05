@@ -1,0 +1,17 @@
+<%= form_for(@api_contestant) do |f| %>
+  <% if @api_contestant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@api_contestant.errors.count, "error") %> prohibited this api_contestant from being saved:</h2>
+
+      <ul>
+      <% @api_contestant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
