@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0.beta2'
 gem 'pg'
 
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -29,12 +29,21 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
 group :test, :development do
   gem 'rspec-rails'
+  gem 'growl'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'pry'
   gem 'pry-debugger'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

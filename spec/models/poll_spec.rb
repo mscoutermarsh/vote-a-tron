@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Poll do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Validations' do
+    it { should validate_presence_of :name }
+  end
+
+  describe 'Associations' do
+    it { should have_many :contestants }
+  end
 end
