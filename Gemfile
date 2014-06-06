@@ -38,7 +38,6 @@ group :test, :development do
   gem 'growl'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'pry'
   gem 'pry-debugger'
 end
