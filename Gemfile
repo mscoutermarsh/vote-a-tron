@@ -7,7 +7,9 @@ gem 'pg'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'rails_admin'
 gem 'devise'
-gem 'redis-rails'
+gem 'memcachier'
+gem 'dalli'
+gem 'actionpack-action_caching'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

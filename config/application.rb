@@ -23,5 +23,6 @@ module VoteATron
         g.fixture_replacement :factory_girl
         g.test_framework :rspec
     end
+    config.cache_store = :mem_cache_store
   end
 end

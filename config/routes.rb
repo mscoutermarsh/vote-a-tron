@@ -6,7 +6,8 @@ VoteATron::Application.routes.draw do
 
   namespace :api, except: :destroy, defaults: { format: 'json' } do
     resources :polls, only: :show do
-      resources :votes, only: :create
+      post 'vote' => 'votes#create'
+      post 'confirm_vote' => 'votes#confirm'
     end
   end
 end

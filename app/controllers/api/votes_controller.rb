@@ -1,20 +1,26 @@
 class Api::VotesController < ApplicationController
-  # POST /api/polls/:id/contestants/:id/votes.json
-  def create
-    @api_vote = Api::Vote.new(api_vote_params)
 
-    respond_to do |format|
-      if @api_vote.save
-        format.json { render action: 'show', status: :created, location: @api_vote }
-      else
-        format.json { render json: @api_vote.errors, status: :unprocessable_entity }
-      end
+  def confirm
+    vote = Vote.find(params['vote_id'])
+    answer = params['answer']
+
+    confirm = vote.confirm(answer) if vote && answer
+    if confirm
+      render json: {message: 'Thanks!'}, status: 201
+    else
+      render json: {message: 'Wrong answer!'}, status: 400
     end
   end
 
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_vote_params
-      params[:api_vote]
+  # POST /api/polls/:id/contestants/:id/votes.json
+  def create
+    contestant = Contestant.find(params['contestant_id'])
+
+    if contestant
+      vote = contestant.votes.create
+      render json: {id: vote.id, question: vote.question}, status: :created
+    else
+      render nothing: true, status: :unprocessable_entity
     end
+  end
 end

@@ -1,8 +1,7 @@
 class Api::PollsController < ApplicationController
   before_action :set_poll, only: [:show]
+  caches_action :show, expires_in: 1.minutes
 
-  # GET /polls/1
-  # GET /polls/1.json
   def show
   end
 
