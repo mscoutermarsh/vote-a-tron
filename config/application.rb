@@ -24,5 +24,6 @@ module VoteATron
         g.test_framework :rspec
     end
     config.cache_store = :mem_cache_store
+    config.serve_static_assets = true
   end
 end
