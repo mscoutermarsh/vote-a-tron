@@ -27,7 +27,6 @@ $(document).ready(function() {
       type: "POST",
       url: "api/polls/1/vote?contestant_id="+id,
       success: function(data) {
-        alert('hi');
         $("#question"+id).html(data.question);
         voteid = data.id;
         $("#confirm"+id).show();
@@ -50,10 +49,14 @@ function confirmVote(id) {
        type: "POST",
        url: "api/polls/1/confirm_vote?vote_id="+voteid+"&answer=" + $("#math"+id).val(),
        success: function(data) {
-          $("#confirm"+id).html(data.message);
-          $("#confirm"+id).show('fast');
-          updateVotes(id);
+          updateVotes();
           $.cookie('pm2014', true, { expires: 7 });
+          $("#confirm1").html('Thanks for voting!');
+          $("#confirm1").show('fast');
+          $("#confirm2").html('Thanks for voting!');
+          $("#confirm2").show('fast');
+          $("#confirm3").html('Thanks for voting!');
+          $("#confirm3").show('fast');
        },
        error: function(data) {
           $("#confirm"+id).hide();
